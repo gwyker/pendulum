@@ -4,7 +4,7 @@ CFLAGS = -g
 COPTFLAGS = 
 LIBFLAGS = -lglut -lGLU -lGL -lm
 HEADERS = prototypes.h
-OBJECTS = 
+OBJECTS = display.o
 
 all : pristine pendulum clean
 
@@ -13,6 +13,9 @@ pendulum : main.o $(OBJECTS)
 
 main.o : main.cpp $(HEADERS)
 	$(CC) $(CFLAGS) -c main.cpp
+
+display.o : display.cpp $(HEADERS)
+	$(CC) $(CFLAGS) -c display.cpp
 
 clean :
 	rm *.o
