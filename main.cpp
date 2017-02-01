@@ -14,6 +14,10 @@ void myinit( void )
       gluOrtho2D(0.0, (float) WINDOW_MAX, 
                  0.0, (float) WINDOW_MAX);
       glMatrixMode(GL_MODELVIEW);
+
+/* set up initial values */
+
+      initialize();
 }
 
 void keyboard( unsigned char key, int x, int y ) {
@@ -41,6 +45,22 @@ void reshape (int w, int h) {
     glLoadIdentity();
     changeView();
     glMatrixMode (GL_MODELVIEW);
+}
+
+void initialize(void) {
+    cout << "Please enter the initial values for this simulation.\n\n";
+    cout << "Initial angle: ";
+        cin >> angle;
+    cout << "Pendulum length: ";
+        cin >> length;
+    cout << "Gravitational constant: ";
+        cin >> gravity;
+    cout << "Damping constant: ";
+        cin >> damping;
+    cout << "Amplitude of the impulse: ";
+        cin >> amplitude;
+    cout << "Frequency of the impulse: ";
+        cin >> freq;                    
 }
 
 int main(int argc, char** argv)
