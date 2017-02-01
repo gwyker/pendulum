@@ -13,11 +13,15 @@
 using namespace std;
 
 void reshape (int w, int h);
+void definePendulumArm (float *points);
+void display (void);
+void drawPendulum (float *points);
 
 typedef struct vertex {
     float x;
     float y;
     float z;
+    float w;
 } vertex;
 
 #endif
