@@ -1,10 +1,13 @@
 #include "prototypes.h"
 
+int WINDOW_MAX = 800;
+float angle, length, gravity, damping, amplitude, freq;
+
 void myinit( void )
 {
 /* attributes */
 
-      glClearColor(0.0, 0.0, 0.0, 1.0); /* black background */
+      glClearColor(1.0, 1.0, 1.0, 1.0); /* white background */
       glPointSize(1.0);
 
 /* set up viewing */
@@ -17,15 +20,15 @@ void myinit( void )
 
 /* set up initial values */
 
-      initialize();
+      //initialize();
 }
 
 void keyboard( unsigned char key, int x, int y ) {
     if ( key == 'q') //exit program
     	exit(0);
-    if (key == 's') //stop animation
+    if (key == 's') {} //stop animation
 
-    if (key == 'r') //reset pendulum to the initial position AND restart motion
+    if (key == 'r') {}//reset pendulum to the initial position AND restart motion
 
 }
 
@@ -43,7 +46,6 @@ void reshape (int w, int h) {
     glViewport(0, 0, (GLsizei) w, (GLsizei) h); 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    changeView();
     glMatrixMode (GL_MODELVIEW);
 }
 
@@ -67,11 +69,10 @@ int main(int argc, char** argv)
 {
     glutInit(&argc,argv);
     glutInitDisplayMode (/*GLUT_DOUBLE | */ GLUT_RGB); 
-    glutInitWindowSize(WINDOW_MAX,WINDOW_MAX); 
+    glutInitWindowSize(WINDOW_MAX, WINDOW_MAX); 
     glutInitWindowPosition(0,0); 
     glutCreateWindow("The Git and the Pendulum"); 
     myinit(); 
-    glutMouseFunc(mouse);
     glutKeyboardFunc(keyboard);
     glutSpecialFunc(arrowkeys);
     glutDisplayFunc(display); 
