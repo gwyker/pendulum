@@ -2,32 +2,35 @@
 
 double t=0.0;
 double theta=M_PI/2.0;
-double omega=0.0;
+double omega=1.5;
 
 void display(void)
 {
-    vertex point[4];     
-    int pointCount = 4;   
-    vertex *points;              //pointer to pendulum coords
+    if (animate) {
+      vertex point[4];     
+      int pointCount = 4;   
+      vertex *points;              //pointer to pendulum coords
 
-    points = &point[0];         //pointer to the array of points 
+      points = &point[0];         //pointer to the array of points 
 
-    glClear(GL_COLOR_BUFFER_BIT);
-    glColor3f(0.5, 1.0, 0.0);
-    
-    //definePendulumArm(points);
-    //drawPendulum(points, pointCount);
-    glPushMatrix();
-    step(t, theta, omega);
-    glTranslatef(400.0, 400.0, 0.0);
-    glRotatef(theta*(180.0/M_PI), 0.0, 0.0, 1.0);
-    glTranslatef(-400.0, -400.0, 0.0);
-    glRecti(350, 400, 450, 200);
-    cout << "t = " << t << " theta = " << theta << " omega = " << omega << endl;
-    cout << "loop\n";
-    glutSwapBuffers();
-    glPopMatrix();
-    glutPostRedisplay();
+      glClear(GL_COLOR_BUFFER_BIT);
+      glColor3f(0.5, 1.0, 0.0);
+      
+      //definePendulumArm(points);
+      //drawPendulum(points, pointCount);
+
+      glPushMatrix();
+      step(t, theta, omega);
+      glTranslatef(400.0, 400.0, 0.0);
+      glRotatef(theta*(180.0/M_PI), 0.0, 0.0, 1.0);
+      glTranslatef(-400.0, -400.0, 0.0);
+      glRecti(350, 400, 450, 200);
+      cout << "t = " << t << " theta = " << theta << " omega = " << omega << endl;
+      cout << "loop\n";
+      glutSwapBuffers();
+      glPopMatrix();
+    }
+      glutPostRedisplay();
 }
 
 void definePendulumArm(vertex *points) //defines the rectangular arm of the pendulum without the bell
@@ -50,4 +53,3 @@ void drawPendulum(vertex *points, int pointCount)
     cout << "pendulum drawn\n";
 }
 */
-

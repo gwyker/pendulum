@@ -1,8 +1,9 @@
 #include "prototypes.h"
 
 int WINDOW_MAX = 800;
-int Nstep = 100;
+int Nstep = 1000;
 float angle, length, gravity, damping, amplitude, freq;
+bool animate = true;
 
 void myinit( void )
 {
@@ -27,9 +28,18 @@ void myinit( void )
 void keyboard( unsigned char key, int x, int y ) {
     if ( key == 'q') //exit program
     	exit(0);
-    if (key == 's') {} //stop animation
+    if (key == 's') {
+        if (animate)
+            animate = false;
+        else
+            animate = true;
+    } //stop animation
 
-    if (key == 'r') {}//reset pendulum to the initial position AND restart motion
+    if (key == 'r') {
+        theta = M_PI/2;
+        t = 0;
+        omega = 1.5;
+    }   //reset pendulum to the initial position AND restart motion
 
 }
 
@@ -37,10 +47,11 @@ void arrowkeys ( int key, int x, int y)
 {
     if ( key == GLUT_KEY_RIGHT) {
         Nstep -= 500; // increase pendulum speed
+        cout << "speed up: " << Nstep << "\n";
     }
     if ( key == GLUT_KEY_LEFT) {
         Nstep += 500; // decrease pendulum speed
-        cout << "left key" << Nstep << "\n";
+        cout << "slown down: " << Nstep << "\n";
     }
 }
 
