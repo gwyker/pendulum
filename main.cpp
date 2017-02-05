@@ -1,6 +1,7 @@
 #include "prototypes.h"
 
 int WINDOW_MAX = 800;
+int Nstep = 100;
 float angle, length, gravity, damping, amplitude, freq;
 
 void myinit( void )
@@ -35,10 +36,11 @@ void keyboard( unsigned char key, int x, int y ) {
 void arrowkeys ( int key, int x, int y)
 {
     if ( key == GLUT_KEY_RIGHT) {
-        // increase pendulum speed
+        Nstep -= 500; // increase pendulum speed
     }
     if ( key == GLUT_KEY_LEFT) {
-        // decrease pendulum speed
+        Nstep += 500; // decrease pendulum speed
+        cout << "left key" << Nstep << "\n";
     }
 }
 

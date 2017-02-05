@@ -12,6 +12,7 @@
 
 extern float angle, length, gravity, damping, amplitude, freq;
 extern double theta, omega, t;
+extern int Nstep;
 
 using namespace std;
 
