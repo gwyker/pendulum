@@ -10,9 +10,9 @@
 #include <cstdlib>
 #include <cmath>
 
-extern float angle, length, gravity, damping, amplitude, freq;
+extern double R, g, b, m, A, k;
 extern double theta, omega, t;
-extern int Nstep;
+extern double Nstep;
 extern bool animate;
 
 using namespace std;
